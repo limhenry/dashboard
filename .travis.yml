@@ -1,0 +1,8 @@
+deploy:
+  provider: gae
+  keyfile: dashboard-limhenryxyz-394ae2d645ea.json
+  project: dashboard-limhenryxyz
+before_install:
+- openssl aes-256-cbc -K $encrypted_26167a6ce474_key -iv $encrypted_26167a6ce474_iv
+  -in dashboard-limhenryxyz-394ae2d645ea.json.enc -out dashboard-limhenryxyz-394ae2d645ea.json
+  -d

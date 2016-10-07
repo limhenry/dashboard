@@ -1,0 +1,238 @@
+{% set navigation_bar = [
+    ('/', 'general', 'General'),
+    ('/experiences', 'experiences', 'Experiences'),
+    ('/honorsandawards', 'honorsandawards', 'Honors And Awards'),
+    ('/presentationsandtalks', 'presentationsandtalks', 'Presentations and Talks'),
+    ('/projects', 'projects', 'Projects'),
+    ('/skills', 'skills', 'Skills'),
+    ('/blog', 'blog', 'Blog'),
+    ('/contact', 'contact', 'Contact')
+] -%}
+
+{% set active_page = active_page|default('general') -%}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel=icon type="image/jpg" href="https://limhenry.xyz/img/favicon.jpg" sizes=512x512>
+    <style>
+    .my-header {
+        background-color: white;
+        border-bottom: 1px solid #d8d8d8;
+        height: 59px;
+    }
+    
+    .my-header .mdl-layout__header-row {
+        height: 60px;
+        padding: 0 30px;
+    }
+
+    .my-header .mdl-layout__header-row .mdl-navigation__link{
+        color: #424242;
+        font-size: 14px;
+        padding: 0 24px 0 0;
+    }
+
+    .my-header .mdl-layout__header-row .mdl-navigation__link:hover{
+        text-decoration: underline;
+    }
+    
+    .my-header .mdl-layout__title {
+        font-weight: 400;
+        color: #424242;
+    }
+    
+    .my-header .profile-pic {
+        margin-left: 4px;
+        height: 32px;
+        border-radius: 50%;
+        padding-right: 0px;
+    }
+    
+    .mdl-layout__container {
+        overflow: hidden;
+        height: calc(100% - 60px);
+    }
+    
+    .mdl-layout__drawer {
+        background-color: #ffffff;
+    }
+    
+    .mdl-layout__content {
+        background-color: #fafafa;
+    }
+    
+    .mdl-layout__title {
+        font-weight: 500;
+    }
+    
+    .mdl-layout__header {
+        min-height: 56px;
+        max-height: 56px;
+    }
+    
+    .mdl-layout__header-row {
+        height: 56px;
+    }
+    
+    .mdl-layout__drawer .mdl-layout__title {
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #d8d8d8;
+        height: 56px;
+        line-height: 56px;
+        padding-left: 24px;
+    }
+    
+    .mdl-layout__drawer .mdl-navigation {
+        padding-top: 8px;
+    }
+    
+    .mdl-layout__drawer .mdl-navigation .mdl-navigation__link.active{
+        border-left: 4px solid #4285f4;
+        color: #4285f4;
+        padding: 10px 12px 10px 20px;
+        font-weight: 600;
+    }
+
+    .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+        padding: 10px 12px 10px 24px;
+        font-size: 16px;
+    }
+    
+    .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+        background-color: white;
+    }
+    
+    .mdl-layout__content .mdl-card,
+    .mdl-layout__content .mdl-data-table {
+        max-width: 640px;
+        width: 100%;
+        margin: 24px auto;
+        min-height: auto;
+        padding: 4px 8px;
+        white-space: initial;
+    }
+    
+    .mdl-card .mdl-card__title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+    
+    .mdl-card .mdl-card__supporting-text {
+        width: 95%;
+    }
+    
+    .switch-container {
+        width: 100%;
+    }
+    
+    .switch-container .switch-label {
+        vertical-align: middle;
+        display: inline-block;
+        width: calc(100% - 48px);
+    }
+    
+    .switch-container .switch-label p {
+        font-weight: 500;
+        margin: 4px 0;
+        color: #212121;
+        font-size: 15px;
+    }
+    
+    .switch-container .mdl-switch {
+        width: auto;
+        display: inline-block;
+    }
+    
+    @media screen and (max-width: 620px) {
+        .mdl-layout__content .mdl-card,
+        .mdl-layout__content .mdl-data-table {
+            margin: 0 auto;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="my-header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout__title">limhenry.xyz</span>
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation">
+                <a href="https://limhenry.xyz" class="mdl-navigation__link" >Home</a>
+                <a href="https://console.firebase.com" class="mdl-navigation__link" >Firebase</a>
+            </nav>
+            <img class="profile-pic" src="https://lh3.googleusercontent.com/-KZmh-jhNPBk/AAAAAAAAAAI/AAAAAAAAAAA/APaXHhQpZAeMSfCeyFIu69H9g0KplwMZlg/s96-c-mo/photo.jpg">
+        </div>
+    </div>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout-icon"></div>
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout__title">{{ title }}</span>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout__title">My Dashboard</span>
+            <nav class="mdl-navigation">
+                {% for href, id, caption in navigation_bar %}
+                    <a href="{{ href|e }}" {% if id == active_page %} class="mdl-navigation__link active"{% endif%} class="mdl-navigation__link" >{{ caption|e }}</a>
+                {% endfor %}
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="mdl-card mdl-shadow--2dp">
+<!--                 <div class="mdl-card__title">
+                    {{ title }}
+                </div> -->
+                <div class="mdl-card__supporting-text">
+                    <div class="switch-container">
+                        <div class="switch-label">
+                            <p>Show in Homepage</p>
+                        </div>
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                            <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Title</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">{{ item.title }}</td>
+                        <td>
+                            <button class="mdl-button mdl-js-button mdl-button--icon">
+                                <i class="material-icons">edit</i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric"><b>Add New Item</b></td>
+                        <td>
+                            <button class="mdl-button mdl-js-button mdl-button--icon">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+
+</html>
