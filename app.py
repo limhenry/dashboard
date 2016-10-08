@@ -14,7 +14,7 @@ def checkAdmin(self):
     user = users.get_current_user()
     if user:
         if users.is_current_user_admin():
-            return true
+            return True
         else:
 			template = JINJA_ENVIRONMENT.get_template('403.html')
 			self.response.write(template.render(logout_url = users.create_logout_url('/')))            
