@@ -10,6 +10,10 @@
 
   handlers:
 
+  - url: /img/(.+)
+    static_files: img/\1
+    upload: img/(.*)     
+
   - url: /.*
     script: app.app
 
