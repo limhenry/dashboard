@@ -64,7 +64,8 @@ class HonorsandawardsPage(webapp2.RequestHandler):
 			template_values = {
 				"active_page": "honorsandawards",
 				'title' : "Honors and Awards",
-				'data': data
+				'data': data,
+				'email' : users.get_current_user().email()
 			}		
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -79,7 +80,8 @@ class PresentationsandtalksPage(webapp2.RequestHandler):
 			template_values = {
 				"active_page": "presentationsandtalks",
 				'title' : "Presentations and Talks",
-				'data': data
+				'data': data,
+				'email' : users.get_current_user().email()
 			}		
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -94,7 +96,8 @@ class ExperiencesPage(webapp2.RequestHandler):
 			template_values = {
 				"active_page": "experiences",
 				'title' : "Experiences",
-				'data': data
+				'data': data,
+				'email' : users.get_current_user().email()
 			}		
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -109,7 +112,8 @@ class ProjectsPage(webapp2.RequestHandler):
 			template_values = {
 				"active_page": "projects",
 				'title' : "Projects",
-				'data': data
+				'data': data,
+				'email' : users.get_current_user().email()
 			}		
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -122,7 +126,8 @@ class SkillsPage(webapp2.RequestHandler):
 
 			template_values = {
 				"active_page": "skills",
-				'title' : "Skills"
+				'title' : "Skills",
+				'email' : users.get_current_user().email()
 			}		
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -135,7 +140,8 @@ class BlogPage(webapp2.RequestHandler):
 
 			template_values = {
 				"active_page": "blog",
-				'title' : "Blog"
+				'title' : "Blog",
+				'email' : users.get_current_user().email()
 			}		
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -150,7 +156,8 @@ class ContactPage(webapp2.RequestHandler):
 			template_values = {
 				"active_page": "contact",
 				'title' : "Contact",
-				'data': data
+				'data': data,
+				'email' : users.get_current_user().email()
 			}		
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
