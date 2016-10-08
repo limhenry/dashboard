@@ -12,6 +12,7 @@
 
   - url: /.*
     script: app.app
+    login: admin
 
 
   skip_files:
