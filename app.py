@@ -48,7 +48,8 @@ class GeneralPage(webapp2.RequestHandler):
 
 			template_values = {
 				"active_page": "general",
-				'title' : "General"
+				'title' : "General",
+				'email' : users.get_current_user().email()
 			}
 
 			template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -163,12 +164,6 @@ class LogoutPage(webapp2.RequestHandler):
 	      self.redirect(users.create_logout_url(target_url))
 	      return
 
-	    # On the production instance, we just remove the session cookie, because
-	    # redirecting users.create_logout_url(...) would log out of all Google
-	    # (e.g. Gmail, Google Calendar).
-	    #
-	    # It seems that AppEngine is setting the ACSID cookie for http:// ,
-	    # and the SACSID cookie for https:// . We just unset both below.
 	    cookie = Cookie.SimpleCookie()
 	    cookie['ACSID'] = ''
 	    cookie['ACSID']['expires'] = -86400  # In the past, a day ago.
@@ -179,6 +174,11 @@ class LogoutPage(webapp2.RequestHandler):
 	    self.response.headers.add_header(*cookie.output().split(': ', 1))
 	    self.redirect(target_url) 
 
+class ProfilePage(webapp2.RequestHandler):
+	def get(self):
+		self.response.write("profile")
+
+
 app = webapp2.WSGIApplication([
 	('/honorsandawards', HonorsandawardsPage), 
 	('/presentationsandtalks', PresentationsandtalksPage), 
@@ -188,5 +188,6 @@ app = webapp2.WSGIApplication([
 	('/blog', BlogPage), 
 	('/contact', ContactPage), 
 	('/logout', LogoutPage), 
+	('/profile', ProfilePage),
 	('/', GeneralPage),
 ], debug=True)
